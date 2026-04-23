@@ -9,7 +9,8 @@ import com.microsoft.playwright.options.LoadState;
 public class PlaywrightBasics {
 
 	public static void main(String[] args) {
-		
+		Playwright playwright = Playwright.create();
+		Browser browser = playwright.chromium().launch();
 	}
 
 }
