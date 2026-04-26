@@ -30,7 +30,8 @@ public class Example {
       page.locator("#microfe-popup-login").contentFrame().getByRole(AriaRole.BUTTON, new FrameLocator.GetByRoleOptions().setName("Next")).click();
       page.locator("#microfe-popup-login").contentFrame().getByText("Must contain atleast 1").click();
       assertThat(page.locator("#microfe-popup-login").contentFrame().locator("form")).equals("Must contain atleast 1 uppercase, 1 lowercase and 1 numeric characters. Minimum 8 characters.");
+      System.out.println("Success");
     }
-    System.out.println("Success");
+    
   }
 }
