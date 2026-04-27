@@ -6,14 +6,18 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import java.util.*;
 
 public class Example {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
     try (Playwright playwright = Playwright.create()) {
       Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
         .setHeadless(false));
       BrowserContext context = browser.newContext();
       Page page = context.newPage();
       page.navigate("https://academy.naveenautomationlabs.com/");
-      page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Login")).click();
+      page.click("text=Login");
+      //page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Login")).click();
+      Thread.sleep(9000);
+      page.click("[placeholder=\"Name\"]");
+      page.fill("[placeholder=\"Name\"]", "testingautomationm");
       page.locator("#microfe-popup-login").contentFrame().getByRole(AriaRole.TEXTBOX, new FrameLocator.GetByRoleOptions().setName("Name")).fill("naveenautomation");
       page.locator("#microfe-popup-login").contentFrame().getByRole(AriaRole.TEXTBOX, new FrameLocator.GetByRoleOptions().setName("Name")).press("ControlOrMeta+a");
       page.locator("#microfe-popup-login").contentFrame().getByRole(AriaRole.TEXTBOX, new FrameLocator.GetByRoleOptions().setName("Name")).press("ControlOrMeta+c");
@@ -32,6 +36,5 @@ public class Example {
       assertThat(page.locator("#microfe-popup-login").contentFrame().locator("form")).equals("Must contain atleast 1 uppercase, 1 lowercase and 1 numeric characters. Minimum 8 characters.");
       System.out.println("Success");
     }
-    
   }
 }
