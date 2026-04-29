@@ -24,6 +24,10 @@ public class BrowserContextConcept {
 		p2.navigate("https://omayo.blogspot.com/");
 		p2.fill("#ta1", "automation by sam");
 		System.out.println(p2.title());
+		
+		p1.fill("#ta1", "automation by sam + update");
+		String text = p1.locator("#ta1").inputValue();
+		System.out.println(text);
 	}
 
 }
