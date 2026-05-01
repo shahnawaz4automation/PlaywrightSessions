@@ -28,6 +28,11 @@ public class BrowserContextConcept {
 		p1.fill("#ta1", "automation by sam + update");
 		String text = p1.locator("#ta1").inputValue();
 		System.out.println(text);
+		
+		p1.close();
+		brcx1.close();
+		p2.close();
+		brcx2.close();
 	}
 
 }
